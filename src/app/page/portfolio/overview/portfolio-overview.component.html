@@ -1,0 +1,16 @@
+<div class="ui hidden divider"></div>
+<div class="container">
+    <h2 class="ui dividing header">Portfolio</h2>
+    <div class="ui divided selection list">
+        <div class="item" *ngFor="let coin of getProfileActiveData().coin">
+            <div class="content">
+                <div class="ui divided selection list">
+                    <div class="item" *ngFor="let wallet of coin.wallet; let i = index">
+                        <div class="ui teal horizontal label">{{coin.name}}</div> {{wallet}}
+                        <div style="float: right;">{{coin.amount[i] | number:'1.2-2'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

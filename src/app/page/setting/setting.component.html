@@ -1,0 +1,19 @@
+<div class="ui hidden divider"></div>
+<div class="container">
+    <ng-container *ngIf="isEdit">
+        <div class="d-flex flex-row fluid ui dividing header">
+            <div class="p-1 flex-grow-1 ui input">
+                <input [(ngModel)]="imputName" type="text" (keyup.enter)="save()" autofocus>
+            </div>
+            <div class="p-1">
+                <button type="button" class="ui teal button mt-2" (click)="save()">Save</button>
+            </div>
+            <div class="p-1">
+                <button type="button" class="ui button mt-2" (click)="toggleEdit()">Cancel</button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!isEdit">
+        <h2 class="ui dividing header">{{activeProfileName}} <span (click)="editClick()" style="cursor: pointer;"><i class="fa-solid fa-pencil fa-sm"></i></span></h2>
+    </ng-container>
+</div>

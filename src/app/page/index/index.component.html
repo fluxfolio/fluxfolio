@@ -1,0 +1,65 @@
+<div class="ui hidden divider"></div>
+<div class="container">
+    <div class="text-end">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewWalletMdl">
+                <i class="fa-solid fa-plus"></i> Add wallet
+            </button>
+            <button type="button" class="btn btn-warning" (click)="updateDataAll()">
+                <i class="fa-solid fa-rotate"></i> Update Data
+            </button>
+        </div>
+    </div>
+
+    <h2 class="ui dividing header"><i class="user icon"></i> Profile: {{getProfileActiveName()}}</h2>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui raised segment">
+        <h2 class="ui dividing header">Portfolio</h2>
+        <div class="ui middle aligned divided list">
+            <div class="item" *ngFor="let coin of getProfileActiveData().coin">
+                <div class="content">
+                    <div class="ui divided selection list">
+                        <div class="item" *ngFor="let wallet of coin.wallet; let i = index">
+                            <div class="ui teal horizontal label">{{coin.name}}</div> {{wallet}}
+                            <div style="float: right;">{{coin.amount[i] | number:'1.2-2'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui raised segment">
+        <h2 class="ui dividing header">Coin</h2>
+        <div class="ui middle aligned divided list">
+            <div class="item" *ngFor="let coin of getProfileActiveData().coin">
+                <i class="folder icon"></i>
+                <div class="content">
+                    <a class="header">{{coin.name}}</a>
+                    <div class="list">
+                        <div class="item" *ngFor="let wallet of coin.wallet; let i = index">
+                            <i class="minus icon"></i>
+                            <div class="content">
+                                <div class="header">
+                                    {{wallet}} <small>({{coin.amount[i] | number:'1.2-2'}})</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui raised segment">
+        
+        <h2 class="ui dividing header">Node ({{getProfileFluxNode().node.length}})</h2>
+        <flux-node-display></flux-node-display>
+        <div class="ui hidden divider"></div>
+    </div>
+</div>
+
+<mdl-add-wallet></mdl-add-wallet>

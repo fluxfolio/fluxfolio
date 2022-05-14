@@ -35,10 +35,17 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/bootstrap/css/bootstrap.min.css",
+              "src/assets/fontawesome/css/all.min.css",
+              "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/jquery-3.6.0.min.js",
+              "src/assets/bootstrap/js/bootstrap.min.js",
+              "src/assets/fontawesome/js/all.min.js",
+              "src/assets/semantic/semantic.min.js",
+              "src/assets/js/jsonpath-0.8.0.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
@@ -106,10 +113,17 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/bootstrap/css/bootstrap.min.css",
+              "src/assets/fontawesome/css/all.min.css",
+              "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/jquery-3.6.0.min.js",
+              "src/assets/bootstrap/js/bootstrap.min.js",
+              "src/assets/fontawesome/js/all.min.js",
+              "src/assets/semantic/semantic.min.js",
+              "src/assets/js/jsonpath-0.8.0.js",
+              "src/assets/js/custom.js"
             ]
           }
         }
