@@ -8,12 +8,24 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { NavbarComponent } from './layouts/navbar/navbar.component'
 import { FooterComponent } from './layouts/footer/footer.component'
 
+import { IndexComponent } from './page/index/index.component'
+
+import { PortfolioOverviewComponent } from './page/portfolio/overview/portfolio-overview.component'
+
+import { CoinFluxComponent } from './page/coin/flux/coin-flux.component'
+
+import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     ContentLayoutComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent,
+    PortfolioOverviewComponent,
+    CoinFluxComponent,
+    NodeDashboardComponent
   ],
   imports: [
     BrowserModule,
