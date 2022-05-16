@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
     profile = {
         profile : [
             {
-                name: 'defalut profile'
+                name: 'default profile'
             }
         ]
     }

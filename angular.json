@@ -36,13 +36,15 @@
             "styles": [
               "src/styles.scss",
               "src/assets/bootstrap/css/bootstrap.min.css",
-              "src/assets/fontawesome/css/all.min.css"
+              "src/assets/fontawesome/css/all.min.css",
+              "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
               "src/assets/bootstrap/js/popper.min.js",
               "src/assets/bootstrap/js/bootstrap.bundle.min.js",
               "src/assets/bootstrap/js/bootstrap.min.js",
-              "src/assets/fontawesome/js/all.min.js"
+              "src/assets/fontawesome/js/all.min.js",
+              "src/assets/semantic/semantic.min.js"
             ]
           },
           "configurations": {
@@ -111,13 +113,15 @@
             "styles": [
               "src/styles.scss",
               "src/assets/bootstrap/css/bootstrap.min.css",
-              "src/assets/fontawesome/css/all.min.css"
+              "src/assets/fontawesome/css/all.min.css",
+              "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
               "src/assets/bootstrap/js/popper.min.js",
               "src/assets/bootstrap/js/bootstrap.bundle.min.js",
               "src/assets/bootstrap/js/bootstrap.min.js",
-              "src/assets/fontawesome/js/all.min.js"
+              "src/assets/fontawesome/js/all.min.js",
+              "src/assets/semantic/semantic.min.js"
             ]
           }
         }
