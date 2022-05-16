@@ -3,8 +3,7 @@ FROM node:14.17.4 as build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm build
-
+RUN npm run build
 
 # Serve static site
 FROM nginx:alpine
