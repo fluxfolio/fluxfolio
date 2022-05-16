@@ -35,11 +35,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css",
+              "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/fontawesome/css/all.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js",
+              "src/assets/bootstrap/js/bootstrap.min.js",
               "src/assets/fontawesome/js/all.min.js"
             ]
           },
@@ -108,11 +108,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css",
+              "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/fontawesome/css/all.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js",
+              "src/assets/bootstrap/js/bootstrap.min.js",
               "src/assets/fontawesome/js/all.min.js"
             ]
           }
