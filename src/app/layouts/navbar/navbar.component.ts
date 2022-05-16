@@ -15,6 +15,16 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        if(!localStorage.getItem('profile')) {
+            localStorage.setItem('profile', JSON.stringify(
+                {
+                    profile : [
+                        {
+                            name: 'defalut'
+                        }
+                    ]
+                }
+            ));
+        }
     }
 }

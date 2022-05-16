@@ -35,10 +35,12 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/fontawesome/css/all.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/fontawesome/js/all.min.js"
             ]
           },
           "configurations": {
@@ -106,10 +108,12 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/fontawesome/css/all.min.css"
             ],
             "scripts": [
-              "src/assets/js/bootstrap.min.js"
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/fontawesome/js/all.min.js"
             ]
           }
         }
