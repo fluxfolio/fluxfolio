@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class IndexComponent implements OnInit {
+    profile = {
+        profile : [
+            {
+                name: ''
+            }
+        ]
+    }
+
     constructor(
         
     ) {
@@ -14,6 +22,6 @@ export class IndexComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
     }
 }

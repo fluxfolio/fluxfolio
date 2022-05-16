@@ -40,8 +40,7 @@
               "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
-              "src/assets/bootstrap/js/popper.min.js",
-              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/jquery-3.6.0.min.js",
               "src/assets/bootstrap/js/bootstrap.min.js",
               "src/assets/fontawesome/js/all.min.js",
               "src/assets/semantic/semantic.min.js"
@@ -117,8 +116,7 @@
               "src/assets/semantic/semantic.min.css"
             ],
             "scripts": [
-              "src/assets/bootstrap/js/popper.min.js",
-              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/jquery-3.6.0.min.js",
               "src/assets/bootstrap/js/bootstrap.min.js",
               "src/assets/fontawesome/js/all.min.js",
               "src/assets/semantic/semantic.min.js"

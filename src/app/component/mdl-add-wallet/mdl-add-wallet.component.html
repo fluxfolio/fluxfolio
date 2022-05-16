@@ -1,0 +1,35 @@
+<div class="modal fade" id="addNewWalletMdl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addNewWalletMdlLabel">Add Wallet</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            1. Enter your wallet address
+            <div class="ui fluid input">
+                <input type="text" placeholder="Enter Wallet Address" onchange="validateForm()">
+            </div>
+
+            <br />
+            2. Select chains
+            <div>
+              <ul>
+                <li *ngFor="let chain of chains">
+                  <input disabled="true" type="checkbox" id="myCheckbox{{chain.name}}" />
+                  <label for="myCheckbox{{chain.name}}">
+                    <img src="assets/img/coin/{{chain.name}}.png" />
+                    <br />
+                    <div class="text-center">Flux</div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="ui button" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="ui teal button"><i class="icon add"></i> Add Wallet</button>
+        </div>
+      </div>
+    </div>
+</div>

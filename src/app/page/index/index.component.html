@@ -1,10 +1,29 @@
 <div class="ui hidden divider"></div>
 <div class="container">
-    <h2 class="ui dividing header">Profile</h2>
+    <div class="text-end">
+        <button class="ui teal button" data-bs-toggle="modal" data-bs-target="#addNewWalletMdl">
+            <i class="icon add"></i> Add wallet
+        </button>
+    </div>
 
+    <h2 class="ui dividing header">Profile</h2>
+    <div class="ui list">
+        <div class="item" *ngFor="let profile of profile.profile">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">{{profile.name}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Portfolio</h2>
 
+    <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Coin</h2>
 
+    <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Node</h2>
 </div>
+
+<mdl-add-wallet></mdl-add-wallet>

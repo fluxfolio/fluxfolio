@@ -8,6 +8,8 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { NavbarComponent } from './layouts/navbar/navbar.component'
 import { FooterComponent } from './layouts/footer/footer.component'
 
+import { MdlAddWalletComponent } from './component/mdl-add-wallet/mdl-add-wallet.component'
+
 import { IndexComponent } from './page/index/index.component'
 
 import { PortfolioOverviewComponent } from './page/portfolio/overview/portfolio-overview.component'
@@ -25,7 +27,8 @@ import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.com
     IndexComponent,
     PortfolioOverviewComponent,
     CoinFluxComponent,
-    NodeDashboardComponent
+    NodeDashboardComponent,
+    MdlAddWalletComponent
   ],
   imports: [
     BrowserModule,

@@ -20,14 +20,10 @@
                 </li>
             </ul>
             <div class="d-flex" role="search">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary active btn-sm" data-bs-toggle="modal" data-bs-target="#changeProfileMdl">{{profileActiveName}}</button>
-                    <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-gear"></i></button>
+                <div class="ui left labeled button" tabindex="0">
+                    <a class="ui basic right pointing label" data-bs-toggle="modal" data-bs-target="#changeProfileMdl">{{profileActiveName}}</a>
+                    <div class="ui teal button"><i class="fa-solid fa-user-gear"></i></div>
                 </div>
-                
-            </div>
-            <div class="d-flex" role="search">
-                
             </div>
         </div>
     </div>
@@ -41,9 +37,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="list-group">
-                <a href="#" class="list-group-item" *ngFor="let profile of profile.profile" (click)="chooseProfile()" data-bs-dismiss="modal">{{profile.name}}</a>
-            </div>
+            <table class="ui selectable celled table">
+                <tbody>
+                    <tr *ngFor="let profile of profile.profile" (click)="chooseProfile()" data-bs-dismiss="modal" style="cursor: pointer;">
+                        <td>{{profile.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
       </div>
     </div>
