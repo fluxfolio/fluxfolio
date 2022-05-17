@@ -14,6 +14,7 @@ export class IndexComponent implements OnInit {
             }
         ]
     }
+    profileActive = 0
 
     constructor(
         
@@ -23,5 +24,6 @@ export class IndexComponent implements OnInit {
 
     ngOnInit() {
         this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
+        this.profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
     }
 }
