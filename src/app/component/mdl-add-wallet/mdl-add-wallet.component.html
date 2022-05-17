@@ -3,12 +3,11 @@
       <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="addNewWalletMdlLabel">Add Wallet</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             1. Enter your wallet address
             <div class="ui fluid input">
-                <input type="text" placeholder="Enter Wallet Address" onchange="validateForm()">
+                <input [(ngModel)]="walletInput" type="text" placeholder="Enter Wallet Address">
             </div>
 
             <br />
@@ -16,7 +15,7 @@
             <div>
               <ul>
                 <li *ngFor="let chain of chains">
-                  <input disabled="true" type="checkbox" id="myCheckbox{{chain.name}}" />
+                  <input (change)="fieldsChange($event)" [disabled]="disabledChain(chain.name)" type="checkbox" id="myCheckbox{{chain.name}}" />
                   <label for="myCheckbox{{chain.name}}">
                     <img src="assets/img/coin/{{chain.name}}.png" />
                     <br />
@@ -27,8 +26,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="ui button" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="ui teal button"><i class="icon add"></i> Add Wallet</button>
+            <button type="button" class="ui button" data-bs-dismiss="modal" (click)="clearData()">Close</button>
+            <button type="button" class="ui teal button" (click)="addWallet()"><i class="icon add"></i> Add Wallet</button>
         </div>
       </div>
     </div>

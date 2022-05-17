@@ -8,20 +8,39 @@ import { Component, OnInit } from '@angular/core';
 
 export class MdlAddWalletComponent implements OnInit {
     chains = [
-        { name: 'flux' }
+        { name: 'flux', checked: false }
     ]
+
+    walletInput = ''
 
     constructor(
         
     ) {
-        console.log('constructor')
+        
     }
 
     ngOnInit() {
-        console.log('oninit')
+        
     }
 
-    validateForm(){
-        
+    clearData(){
+        this.walletInput = ''
+    }
+
+    addWallet(){
+        console.log(this.chains[0].checked)
+    }
+
+    fieldsChange(values:any){
+        console.log(values.currentTarget.checked);
+    }
+
+    disabledChain(coin: string){
+        if(coin == 'flux') return this.disabledFlux()
+        return true
+    }
+
+    disabledFlux(){
+        return !this.walletInput.startsWith('t1')
     }
 }
