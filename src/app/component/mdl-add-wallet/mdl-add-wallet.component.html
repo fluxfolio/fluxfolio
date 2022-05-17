@@ -5,13 +5,13 @@
             <h5 class="modal-title" id="addNewWalletMdlLabel">Add Wallet</h5>
         </div>
         <div class="modal-body">
-            1. Enter your wallet address
+            <div class="ui {{validateText}} label">1. Enter your wallet address</div>
             <div class="ui fluid input">
                 <input [(ngModel)]="walletInput" type="text" placeholder="Enter Wallet Address">
             </div>
 
             <br />
-            2. Select chains
+            <div class="ui {{validateText}} label">2. Select chains</div>
             <div>
               <ul>
                 <li *ngFor="let chain of chains;let i = index">

@@ -12,6 +12,7 @@ export class MdlAddWalletComponent implements OnInit {
     ]
 
     walletInput = ''
+    validateText = ''
 
     constructor(
         
@@ -28,10 +29,27 @@ export class MdlAddWalletComponent implements OnInit {
         this.chains.forEach(element => {
             element.checked = false
         })
+        this.validateText = ''
+    }
+
+    validateWallet(){
+        
     }
 
     addWallet(){
-        console.log(this.chains[0].checked)
+        let chainChecked = false
+        for(let chain of this.chains){
+            if(chain.checked){
+                chainChecked = true
+                break
+            }
+        }
+        if(this.walletInput && chainChecked){
+
+        }
+        else{
+            this.validateText = 'red basic'
+        }
     }
 
     fieldsChange(values:any, i:any){
