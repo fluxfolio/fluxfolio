@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'mdl-add-wallet',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MdlAddWalletComponent implements OnInit {
+    @ViewChild('closeModal', { static: false }) closeModal: ElementRef<HTMLInputElement> = {} as ElementRef;
+
+
     chains = [
         { name: 'flux', checked: false }
     ]
@@ -32,10 +35,6 @@ export class MdlAddWalletComponent implements OnInit {
         this.validateText = ''
     }
 
-    validateWallet(){
-        
-    }
-
     addWallet(){
         let chainChecked = false
         for(let chain of this.chains){
@@ -45,7 +44,37 @@ export class MdlAddWalletComponent implements OnInit {
             }
         }
         if(this.walletInput && chainChecked){
+            let profile = JSON.parse(localStorage.getItem('profile') || '{}')
+            let profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
 
+            for(let chain of this.chains){
+                if(chain.checked){
+                    let found = false
+                    for(let i = 0; i < profile.profile[profileActive].coin.length; i++) {
+                        let coin = profile.profile[profileActive].coin[i]
+                        if(coin.name == chain.name){
+                            found = true
+                            profile.profile[profileActive].coin[i].wallet.indexOf(this.walletInput) === -1 ?
+                                profile.profile[profileActive].coin[i].wallet.push(this.walletInput) : 
+                                console.log('duplicate wallet')
+                            break
+                        }
+                    }
+                    if(!found){
+                        profile.profile[profileActive].coin.push({
+                            name: chain.name,
+                            wallet: [
+                                this.walletInput
+                            ]
+                        })
+                    }
+                }
+            }
+
+            localStorage.setItem('profile', JSON.stringify(profile));
+
+            this.clearData()
+            this.closeModal.nativeElement.click()
         }
         else{
             this.validateText = 'red basic'
