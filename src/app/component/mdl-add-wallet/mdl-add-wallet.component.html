@@ -14,8 +14,8 @@
             2. Select chains
             <div>
               <ul>
-                <li *ngFor="let chain of chains">
-                  <input (change)="fieldsChange($event)" [disabled]="disabledChain(chain.name)" type="checkbox" id="myCheckbox{{chain.name}}" />
+                <li *ngFor="let chain of chains;let i = index">
+                  <input (change)="fieldsChange($event, i)" [(ngModel)]="chain.checked" [disabled]="disabledChain(chain.name)" type="checkbox" id="myCheckbox{{chain.name}}" />
                   <label for="myCheckbox{{chain.name}}">
                     <img src="assets/img/coin/{{chain.name}}.png" />
                     <br />
