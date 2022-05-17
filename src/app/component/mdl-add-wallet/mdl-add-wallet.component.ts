@@ -25,18 +25,26 @@ export class MdlAddWalletComponent implements OnInit {
 
     clearData(){
         this.walletInput = ''
+        this.chains.forEach(element => {
+            element.checked = false
+        })
     }
 
     addWallet(){
         console.log(this.chains[0].checked)
     }
 
-    fieldsChange(values:any){
-        console.log(values.currentTarget.checked);
+    fieldsChange(values:any, i:any){
+        this.chains[i].checked = values.currentTarget.checked
     }
 
     disabledChain(coin: string){
-        if(coin == 'flux') return this.disabledFlux()
+        if(coin == 'flux'){
+            let dis = this.disabledFlux()
+            if(dis) this.chains[0].checked = false
+            return dis
+        }
+        
         return true
     }
 
