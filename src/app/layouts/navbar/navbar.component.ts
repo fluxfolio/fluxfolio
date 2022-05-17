@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NavbarComponent implements OnInit {
-    profileActiveName = ''
     profile = {
         profile : [
             {
@@ -29,13 +28,12 @@ export class NavbarComponent implements OnInit {
         if(!localStorage.getItem('profile')) {
             localStorage.setItem('profile', JSON.stringify(this.profile));
             localStorage.setItem('profileActive', '0');
+        }
+    }
 
-            this.profileActiveName = this.profile.profile[0].name
-        }
-        else {
-            this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
-            this.profileActiveName = this.profile.profile[0].name
-        }
+    profileActiveName(){
+        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
+        return this.profile.profile[0].name
     }
 
     chooseProfile(){
