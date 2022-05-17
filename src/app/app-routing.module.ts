@@ -11,6 +11,8 @@ import { CoinFluxComponent } from './page/coin/flux/coin-flux.component'
 
 import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.component'
 
+import { SettingComponent } from './page/setting/setting.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -31,6 +33,10 @@ const routes: Routes = [
       {
         path: 'node',
         component: NodeDashboardComponent
+      },
+      {
+        path: 'setting',
+        component: SettingComponent
       }
     ]
   }

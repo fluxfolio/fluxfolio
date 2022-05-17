@@ -19,6 +19,8 @@ import { CoinFluxComponent } from './page/coin/flux/coin-flux.component'
 
 import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.component'
 
+import { SettingComponent } from './page/setting/setting.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.com
     PortfolioOverviewComponent,
     CoinFluxComponent,
     NodeDashboardComponent,
-    MdlAddWalletComponent
+    MdlAddWalletComponent,
+    SettingComponent,
   ],
   imports: [
     BrowserModule,
