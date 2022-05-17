@@ -33,11 +33,6 @@ export class SettingComponent implements OnInit {
     }
 
     ngOnInit() {
-        if(!localStorage.getItem('profile')) {
-            localStorage.setItem('profile', JSON.stringify(this.profile));
-            localStorage.setItem('profileActive', '0');
-        }
-
         this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
         this.profileActive = +JSON.parse(localStorage.getItem('profileActive') || "0")
     }
