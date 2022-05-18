@@ -7,15 +7,17 @@
     </div>
 
     <h2 class="ui dividing header"><i class="user icon"></i> Profile: {{profile.profile[profileActive].name}}</h2>
-    
+    <button class="ui teal button" (click)="updateDataAll()">Update ALL</button>
+
     <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Portfolio</h2>
     <div class="ui middle aligned divided list">
         <div class="item" *ngFor="let coin of profile.profile[profileActive].coin">
             <div class="content">
-                <div class="list">
-                    <div class="item" *ngFor="let wallet of coin.wallet">
+                <div class="ui divided selection list">
+                    <div class="item" *ngFor="let wallet of coin.wallet; let i = index">
                         <div class="ui teal horizontal label">{{coin.name}}</div> {{wallet}}
+                        <div style="float: right;">{{coin.amount[i] | number:'1.2-2'}}</div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { COINS } from '../../../properties/constants'
+
 @Component({
     selector: 'coin-overview',
     templateUrl: './coin-overview.component.html',
@@ -7,6 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CoinOverviewComponent implements OnInit {
+
+    coins = JSON.parse(JSON.stringify(COINS));
+
+    profile = {
+        profile : [
+            {
+                name: '',
+                coin: [{
+                    name: '',
+                    wallet: []
+                }]
+            }
+        ]
+    }
+    profileActive = 0
+
     constructor(
         
     ) {
@@ -14,6 +32,18 @@ export class CoinOverviewComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
+        this.profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
+    }
+
+    getWallet(coin: string){
+        let profileAc = this.profile.profile[this.profileActive]
+        for(let i = 0; i < profileAc.coin.length; i++){
+            if(profileAc.coin[i].name == coin){
+                return profileAc.coin[i].wallet
+            }
+        }
+
+        return []
     }
 }

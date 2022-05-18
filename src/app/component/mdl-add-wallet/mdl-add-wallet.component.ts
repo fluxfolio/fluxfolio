@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
+import { COINS } from '../../properties/constants'
+
 @Component({
     selector: 'mdl-add-wallet',
     templateUrl: './mdl-add-wallet.component.html',
@@ -9,10 +11,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 export class MdlAddWalletComponent implements OnInit {
     @ViewChild('closeModal', { static: false }) closeModal: ElementRef<HTMLInputElement> = {} as ElementRef;
 
-
-    chains = [
-        { name: 'flux', checked: false }
-    ]
+    chains = JSON.parse(JSON.stringify(COINS));
 
     walletInput = ''
     validateText = ''
@@ -29,7 +28,7 @@ export class MdlAddWalletComponent implements OnInit {
 
     clearData(){
         this.walletInput = ''
-        this.chains.forEach(element => {
+        this.chains.forEach((element: { checked: boolean; }) => {
             element.checked = false
         })
         this.validateText = ''
@@ -54,9 +53,14 @@ export class MdlAddWalletComponent implements OnInit {
                         let coin = profile.profile[profileActive].coin[i]
                         if(coin.name == chain.name){
                             found = true
-                            profile.profile[profileActive].coin[i].wallet.indexOf(this.walletInput) === -1 ?
-                                profile.profile[profileActive].coin[i].wallet.push(this.walletInput) : 
+                            if(coin.wallet.indexOf(this.walletInput) === -1){
+                                coin.wallet.push(this.walletInput)
+                                coin.amount.push(0.00)
+                            } 
+                            else {
                                 console.log('duplicate wallet')
+                            }
+                                
                             break
                         }
                     }
@@ -65,6 +69,9 @@ export class MdlAddWalletComponent implements OnInit {
                             name: chain.name,
                             wallet: [
                                 this.walletInput
+                            ],
+                            amount: [
+                                0.00
                             ]
                         })
                     }

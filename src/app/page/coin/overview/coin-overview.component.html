@@ -1,4 +1,24 @@
 <div class="ui hidden divider"></div>
 <div class="container">
     <h2 class="ui dividing header">Coin</h2>
+    <div class="ui raised segments">
+        <div class="ui segment" *ngFor="let coin of coins">
+            <h2 class="ui header">
+                <img src="/assets/img/coin/{{coin.name}}.png" class="ui circular small image"> {{coin.name}}
+            </h2>
+            <div>
+                <div>Wallet ({{getWallet(coin.name).length}})</div>
+                <div class="ui divided selection list">
+                    <div class="item" *ngFor="let wallet of getWallet(coin.name)">
+                        {{wallet}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-end">
+                <a class="ui compact right labeled icon teal button" routerLink="/coin/{{coin.name}}">
+                    <i class="right arrow icon"></i> coin info
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
