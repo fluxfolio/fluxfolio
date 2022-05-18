@@ -7,6 +7,7 @@ import { IndexComponent } from './page/index/index.component'
 
 import { PortfolioOverviewComponent } from './page/portfolio/overview/portfolio-overview.component'
 
+import { CoinOverviewComponent } from './page/coin/overview/coin-overview.component'
 import { CoinFluxComponent } from './page/coin/flux/coin-flux.component'
 
 import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.component'
@@ -28,6 +29,10 @@ const routes: Routes = [
       },
       {
         path: 'coin',
+        component: CoinOverviewComponent
+      },
+      {
+        path: 'coin/flux',
         component: CoinFluxComponent
       },
       {

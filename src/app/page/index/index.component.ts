@@ -10,7 +10,11 @@ export class IndexComponent implements OnInit {
     profile = {
         profile : [
             {
-                name: ''
+                name: '',
+                coin: [{
+                    name: '',
+                    wallet: []
+                }]
             }
         ]
     }

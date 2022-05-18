@@ -15,6 +15,7 @@ import { IndexComponent } from './page/index/index.component'
 
 import { PortfolioOverviewComponent } from './page/portfolio/overview/portfolio-overview.component'
 
+import { CoinOverviewComponent } from './page/coin/overview/coin-overview.component'
 import { CoinFluxComponent } from './page/coin/flux/coin-flux.component'
 
 import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.component'
@@ -33,6 +34,7 @@ import { SettingComponent } from './page/setting/setting.component'
     NodeDashboardComponent,
     MdlAddWalletComponent,
     SettingComponent,
+    CoinOverviewComponent
   ],
   imports: [
     BrowserModule,

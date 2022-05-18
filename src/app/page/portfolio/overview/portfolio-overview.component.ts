@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PortfolioOverviewComponent implements OnInit {
+    profile = {
+        profile : [
+            {
+                name: '',
+                coin: [{
+                    name: '',
+                    wallet: []
+                }]
+            }
+        ]
+    }
+    profileActive = 0
+    
     constructor(
         
     ) {
@@ -14,6 +27,7 @@ export class PortfolioOverviewComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
+        this.profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
     }
 }

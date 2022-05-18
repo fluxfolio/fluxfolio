@@ -6,21 +6,40 @@
         </button>
     </div>
 
-    <h2 class="ui dividing header">Profile</h2>
-    <div class="ui list">
-        <div class="item" *ngFor="let profile of profile.profile">
-            <i class="user icon"></i>
+    <h2 class="ui dividing header"><i class="user icon"></i> Profile: {{profile.profile[profileActive].name}}</h2>
+    
+    <div class="ui hidden divider"></div>
+    <h2 class="ui dividing header">Portfolio</h2>
+    <div class="ui middle aligned divided list">
+        <div class="item" *ngFor="let coin of profile.profile[profileActive].coin">
             <div class="content">
-                <div class="header">{{profile.name}}</div>
+                <div class="list">
+                    <div class="item" *ngFor="let wallet of coin.wallet">
+                        <div class="ui teal horizontal label">{{coin.name}}</div> {{wallet}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="ui hidden divider"></div>
-    <h2 class="ui dividing header">Portfolio</h2>
-
-    <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Coin</h2>
+    <div class="ui middle aligned divided list">
+        <div class="item" *ngFor="let coin of profile.profile[profileActive].coin">
+            <i class="folder icon"></i>
+            <div class="content">
+                <a class="header">{{coin.name}}</a>
+                <div class="list">
+                    <div class="item" *ngFor="let wallet of coin.wallet">
+                        <i class="minus icon"></i>
+                        <div class="content">
+                            <div class="header">{{wallet}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="ui hidden divider"></div>
     <h2 class="ui dividing header">Node</h2>
