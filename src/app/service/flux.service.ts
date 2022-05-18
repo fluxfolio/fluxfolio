@@ -23,7 +23,10 @@ export class FluxService {
     updateAll(fluxElement: { name?: string; wallet?: any; }){
         fluxElement.wallet.forEach((wallet: any) => {
             this.getWalletAmount(wallet).subscribe((data) => {
-                console.log(data)
+                if(data){
+                    console.log(data)
+                    console.log(data.amount)
+                }
             })
         });
     }
