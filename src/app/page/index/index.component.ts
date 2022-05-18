@@ -13,7 +13,8 @@ export class IndexComponent implements OnInit {
                 name: '',
                 coin: [{
                     name: '',
-                    wallet: []
+                    wallet: [],
+                    amount: []
                 }]
             }
         ]

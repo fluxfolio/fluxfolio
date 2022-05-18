@@ -37,9 +37,10 @@ export class CoinOverviewComponent implements OnInit {
     }
 
     getWallet(coin: string){
-        for(let i = 0; i < this.profile.profile[this.profileActive].coin.length; i++){
-            if(this.profile.profile[this.profileActive].coin[i].name == coin){
-                return this.profile.profile[this.profileActive].coin[i].wallet
+        let profileAc = this.profile.profile[this.profileActive]
+        for(let i = 0; i < profileAc.coin.length; i++){
+            if(profileAc.coin[i].name == coin){
+                return profileAc.coin[i].wallet
             }
         }
 

@@ -13,7 +13,8 @@ export class PortfolioOverviewComponent implements OnInit {
                 name: '',
                 coin: [{
                     name: '',
-                    wallet: []
+                    wallet: [],
+                    amount: []
                 }]
             }
         ]

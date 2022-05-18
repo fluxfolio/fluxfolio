@@ -4,9 +4,10 @@
     <div class="ui divided selection list">
         <div class="item" *ngFor="let coin of profile.profile[profileActive].coin">
             <div class="content">
-                <div class="list">
-                    <div class="item" *ngFor="let wallet of coin.wallet">
+                <div class="ui divided selection list">
+                    <div class="item" *ngFor="let wallet of coin.wallet; let i = index">
                         <div class="ui teal horizontal label">{{coin.name}}</div> {{wallet}}
+                        <div style="float: right;">{{coin.amount[i] | number:'1.2-2'}}</div>
                     </div>
                 </div>
             </div>

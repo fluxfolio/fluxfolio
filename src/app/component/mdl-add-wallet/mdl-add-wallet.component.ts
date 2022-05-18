@@ -53,9 +53,14 @@ export class MdlAddWalletComponent implements OnInit {
                         let coin = profile.profile[profileActive].coin[i]
                         if(coin.name == chain.name){
                             found = true
-                            profile.profile[profileActive].coin[i].wallet.indexOf(this.walletInput) === -1 ?
-                                profile.profile[profileActive].coin[i].wallet.push(this.walletInput) : 
+                            if(coin.wallet.indexOf(this.walletInput) === -1){
+                                coin.wallet.push(this.walletInput)
+                                coin.amount.push(0.00)
+                            } 
+                            else {
                                 console.log('duplicate wallet')
+                            }
+                                
                             break
                         }
                     }
@@ -64,6 +69,9 @@ export class MdlAddWalletComponent implements OnInit {
                             name: chain.name,
                             wallet: [
                                 this.walletInput
+                            ],
+                            amount: [
+                                0.00
                             ]
                         })
                     }
