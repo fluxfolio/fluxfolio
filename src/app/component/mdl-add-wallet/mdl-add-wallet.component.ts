@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
+import { COINS } from '../../properties/constants'
+
 @Component({
     selector: 'mdl-add-wallet',
     templateUrl: './mdl-add-wallet.component.html',
@@ -9,10 +11,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 export class MdlAddWalletComponent implements OnInit {
     @ViewChild('closeModal', { static: false }) closeModal: ElementRef<HTMLInputElement> = {} as ElementRef;
 
-
-    chains = [
-        { name: 'flux', checked: false }
-    ]
+    chains = JSON.parse(JSON.stringify(COINS));
 
     walletInput = ''
     validateText = ''
@@ -29,7 +28,7 @@ export class MdlAddWalletComponent implements OnInit {
 
     clearData(){
         this.walletInput = ''
-        this.chains.forEach(element => {
+        this.chains.forEach((element: { checked: boolean; }) => {
             element.checked = false
         })
         this.validateText = ''
