@@ -11,21 +11,7 @@ import { ProfileService } from '../../../service/profile.service'
 })
 
 export class CoinOverviewComponent implements OnInit {
-
     coins = JSON.parse(JSON.stringify(COINS));
-
-    profile = {
-        profile : [
-            {
-                name: '',
-                coin: [{
-                    name: '',
-                    wallet: []
-                }]
-            }
-        ]
-    }
-    profileActive = 0
 
     constructor(
         private profileService: ProfileService
@@ -34,15 +20,14 @@ export class CoinOverviewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.profile = this.profileService.getAllProfile()
-        this.profileActive = this.profileService.getProfileActive()
+        this.profileService.getAllProfile()
     }
 
     getWallet(coin: string){
-        let profileAc = this.profile.profile[this.profileActive]
-        for(let i = 0; i < profileAc.coin.length; i++){
-            if(profileAc.coin[i].name == coin){
-                return profileAc.coin[i].wallet
+        let profileActiveData = this.profileService.getProfileActiveDate()
+        for(let i = 0; i < profileActiveData.coin.length; i++){
+            if(profileActiveData.coin[i].name == coin){
+                return profileActiveData.coin[i].wallet
             }
         }
 

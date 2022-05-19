@@ -34,6 +34,9 @@ export class FluxService {
                 }
             })
         });
-        
+    }
+
+    getWalletNodeByIndex(fluxElement: any, i: any){
+
     }
 }

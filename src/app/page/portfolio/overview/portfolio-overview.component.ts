@@ -8,21 +8,7 @@ import { ProfileService } from '../../../service/profile.service'
     styleUrls: ['./portfolio-overview.component.scss']
 })
 
-export class PortfolioOverviewComponent implements OnInit {
-    profile = {
-        profile : [
-            {
-                name: '',
-                coin: [{
-                    name: '',
-                    wallet: [],
-                    amount: []
-                }]
-            }
-        ]
-    }
-    profileActive = 0
-    
+export class PortfolioOverviewComponent implements OnInit {    
     constructor(
         private profileService: ProfileService
     ) {
@@ -30,7 +16,10 @@ export class PortfolioOverviewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.profile = this.profileService.getAllProfile()
-        this.profileActive = this.profileService.getProfileActive()
+        
+    }
+
+    getProfileActiveData() {
+        return this.profileService.getProfileActiveDate()
     }
 }

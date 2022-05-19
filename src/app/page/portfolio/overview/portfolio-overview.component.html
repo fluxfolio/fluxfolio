@@ -2,7 +2,7 @@
 <div class="container">
     <h2 class="ui dividing header">Portfolio</h2>
     <div class="ui divided selection list">
-        <div class="item" *ngFor="let coin of profile.profile[profileActive].coin">
+        <div class="item" *ngFor="let coin of getProfileActiveData().coin">
             <div class="content">
                 <div class="ui divided selection list">
                     <div class="item" *ngFor="let wallet of coin.wallet; let i = index">

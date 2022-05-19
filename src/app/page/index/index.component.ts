@@ -10,20 +10,6 @@ import { UpdateService } from '../../service/update.service'
 })
 
 export class IndexComponent implements OnInit {
-    profile = {
-        profile : [
-            {
-                name: '',
-                coin: [{
-                    name: '',
-                    wallet: [],
-                    amount: []
-                }]
-            }
-        ]
-    }
-    profileActive = 0
-
     constructor(
         private updateService: UpdateService,
         private profileService: ProfileService
@@ -32,8 +18,15 @@ export class IndexComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.profile = this.profileService.getAllProfile()
-        this.profileActive = this.profileService.getProfileActive()
+        
+    }
+
+    getProfileActiveData(){
+        return this.profileService.getProfileActiveDate()
+    }
+
+    getProfileActiveName(){
+        return this.profileService.getProfileActiveName()
     }
 
     updateDataAll(){

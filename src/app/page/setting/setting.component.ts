@@ -10,14 +10,6 @@ import { ProfileService } from '../../service/profile.service'
 
 export class SettingComponent implements OnInit {
     isEdit = false
-    profile = {
-        profile : [
-            {
-                name: ''
-            }
-        ]
-    }
-    profileActive = 0
     imputName = ""
 
     constructor(
@@ -27,16 +19,16 @@ export class SettingComponent implements OnInit {
     }
 
     get activeProfileName(): string {
-        return this.profile.profile[this.profileActive].name
+        return this.profileService.getProfileActiveDate().name
     }
     set activeProfileName(newName: string) {
-        this.profile.profile[this.profileActive].name = newName
-        localStorage.setItem('profile', JSON.stringify(this.profile));
+        let profile = this.profileService.getAllProfile()
+        profile.profile[this.profileService.getProfileActive()].name = newName
+        this.profileService.setAllProfile(profile)
     }
 
     ngOnInit() {
-        this.profile = this.profileService.getAllProfile()
-        this.profileActive = this.profileService.getProfileActive()
+        
     }
 
     save() {
