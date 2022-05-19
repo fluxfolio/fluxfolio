@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable()
 export class FluxService {
     GET_FLUX_NODE = 'https://explorer.runonflux.io/api/status?q=getFluxNodes'
@@ -20,11 +16,24 @@ export class FluxService {
         return this.http.get<any>(this.GET_WALLET_AMT.replace('{0}', wallet));
     }
 
-    updateAll(fluxElement: { name?: string; wallet?: any; }){
-        fluxElement.wallet.forEach((wallet: any) => {
+    async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; }){
+        for(let i = 0; i < fluxElement.wallet.length; i++){
+            await this.getWalletAmountByIndex(fluxElement, i)
+        }
+
+        return fluxElement
+    }
+
+    getWalletAmountByIndex(fluxElement: any, i: any){
+        return new Promise(resolve => {
+            let wallet = fluxElement.wallet[i]
             this.getWalletAmount(wallet).subscribe((data) => {
-                console.log(data)
+                if(data){
+                    fluxElement.amount[i] = data.balance
+                    resolve('receive data balance')
+                }
             })
         });
+        
     }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { COINS } from '../../../properties/constants'
 
+import { ProfileService } from '../../../service/profile.service'
+
 @Component({
     selector: 'coin-overview',
     templateUrl: './coin-overview.component.html',
@@ -26,14 +28,14 @@ export class CoinOverviewComponent implements OnInit {
     profileActive = 0
 
     constructor(
-        
+        private profileService: ProfileService
     ) {
         
     }
 
     ngOnInit() {
-        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
-        this.profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
+        this.profile = this.profileService.getAllProfile()
+        this.profileActive = this.profileService.getProfileActive()
     }
 
     getWallet(coin: string){

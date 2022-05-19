@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProfileService } from '../../service/profile.service'
+
 @Component({
     selector: 'setting',
     templateUrl: './setting.component.html',
@@ -19,7 +21,7 @@ export class SettingComponent implements OnInit {
     imputName = ""
 
     constructor(
-        
+        private profileService: ProfileService
     ) {
         
     }
@@ -33,8 +35,8 @@ export class SettingComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
-        this.profileActive = +JSON.parse(localStorage.getItem('profileActive') || "0")
+        this.profile = this.profileService.getAllProfile()
+        this.profileActive = this.profileService.getProfileActive()
     }
 
     save() {
