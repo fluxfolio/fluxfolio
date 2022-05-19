@@ -10,14 +10,17 @@ export class UpdateService {
 
     }
 
-    updateAll(){
+    async updateAll(){
         let profile = JSON.parse(localStorage.getItem('profile') || '{}')
         let profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
 
-        profile.profile[profileActive].coin.forEach((element: { name: string; }) => {
+        for(let i = 0; i < profile.profile[profileActive].coin.length; i++) {
+            let element = profile.profile[profileActive].coin[i]
             if(element.name == 'flux'){
-                this.fluxService.updateAll(element)
+                await this.fluxService.updateAll(element)
             }
-        });
+        };
+
+        localStorage.setItem('profile', JSON.stringify(profile))
     }
 }

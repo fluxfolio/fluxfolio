@@ -20,14 +20,24 @@ export class FluxService {
         return this.http.get<any>(this.GET_WALLET_AMT.replace('{0}', wallet));
     }
 
-    updateAll(fluxElement: { name?: string; wallet?: any; }){
-        fluxElement.wallet.forEach((wallet: any) => {
+    async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; }){
+        for(let i = 0; i < fluxElement.wallet.length; i++){
+            await this.getWalletAmountByIndex(fluxElement, i)
+        }
+
+        return fluxElement
+    }
+
+    getWalletAmountByIndex(fluxElement: any, i: any){
+        return new Promise(resolve => {
+            let wallet = fluxElement.wallet[i]
             this.getWalletAmount(wallet).subscribe((data) => {
                 if(data){
-                    console.log(data)
-                    console.log(data.amount)
+                    fluxElement.amount[i] = data.balance
+                    resolve('receive data balance')
                 }
             })
         });
+        
     }
 }
