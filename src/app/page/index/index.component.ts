@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProfileService } from '../../service/profile.service'
 import { UpdateService } from '../../service/update.service'
 
 @Component({
@@ -24,14 +25,15 @@ export class IndexComponent implements OnInit {
     profileActive = 0
 
     constructor(
-        private updateService: UpdateService
+        private updateService: UpdateService,
+        private profileService: ProfileService
     ) {
         
     }
 
     ngOnInit() {
-        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
-        this.profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
+        this.profile = this.profileService.getAllProfile()
+        this.profileActive = this.profileService.getProfileActive()
     }
 
     updateDataAll(){

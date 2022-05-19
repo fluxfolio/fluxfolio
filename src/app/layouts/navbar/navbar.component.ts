@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProfileService } from '../../service/profile.service'
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -19,21 +21,17 @@ export class NavbarComponent implements OnInit {
     }
 
     constructor(
-        
+        private profileService: ProfileService
     ) {
         
     }
 
     ngOnInit() {
-        if(!localStorage.getItem('profile')) {
-            localStorage.setItem('profile', JSON.stringify(this.profile));
-            localStorage.setItem('profileActive', '0');
-        }
+        this.profile = this.profileService.getAllProfile()
     }
 
     profileActiveName(){
-        this.profile = JSON.parse(localStorage.getItem('profile') || '{}')
-        return this.profile.profile[0].name
+        return this.profileService.getProfileActiveName()
     }
 
     chooseProfile(){

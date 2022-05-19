@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 
+import { ProfileService } from './profile.service'
 import { FluxService } from './flux.service'
 
 @Injectable()
 export class UpdateService {
     constructor(
-        private fluxService: FluxService
+        private fluxService: FluxService,
+        private profileService: ProfileService
     ) {
 
     }
 
     async updateAll(){
-        let profile = JSON.parse(localStorage.getItem('profile') || '{}')
-        let profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
+        let profile = this.profileService.getAllProfile()
+        let profileActive = this.profileService.getProfileActive()
 
         for(let i = 0; i < profile.profile[profileActive].coin.length; i++) {
             let element = profile.profile[profileActive].coin[i]
@@ -21,6 +23,6 @@ export class UpdateService {
             }
         };
 
-        localStorage.setItem('profile', JSON.stringify(profile))
+        this.profileService.setAllProfile(profile)
     }
 }

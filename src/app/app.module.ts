@@ -32,6 +32,7 @@ import { SettingComponent } from './page/setting/setting.component'
 // service
 import { UpdateService } from './service/update.service'
 import { FluxService } from './service/flux.service'
+import { ProfileService } from './service/profile.service'
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FluxService } from './service/flux.service'
   ],
   providers: [
     UpdateService,
-    FluxService
+    FluxService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

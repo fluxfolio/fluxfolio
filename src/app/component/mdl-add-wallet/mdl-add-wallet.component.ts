@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { COINS } from '../../properties/constants'
 
+import { ProfileService } from '../../service/profile.service'
+
 @Component({
     selector: 'mdl-add-wallet',
     templateUrl: './mdl-add-wallet.component.html',
@@ -17,7 +19,7 @@ export class MdlAddWalletComponent implements OnInit {
     validateText = ''
 
     constructor(
-        
+        private profileService: ProfileService
     ) {
         
     }
@@ -43,8 +45,8 @@ export class MdlAddWalletComponent implements OnInit {
             }
         }
         if(this.walletInput && chainChecked){
-            let profile = JSON.parse(localStorage.getItem('profile') || '{}')
-            let profileActive = JSON.parse(localStorage.getItem('profileActive') || '{}')
+            let profile = this.profileService.getAllProfile()
+            let profileActive = this.profileService.getProfileActive()
 
             for(let chain of this.chains){
                 if(chain.checked){
@@ -78,8 +80,7 @@ export class MdlAddWalletComponent implements OnInit {
                 }
             }
 
-            localStorage.setItem('profile', JSON.stringify(profile));
-
+            this.profileService.setAllProfile(profile)
             this.clearData()
             this.closeModal.nativeElement.click()
         }
