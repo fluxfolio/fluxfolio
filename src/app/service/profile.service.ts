@@ -31,6 +31,10 @@ export class ProfileService {
         localStorage.setItem('profile', JSON.stringify(profile))
     }
 
+    getProfileActiveDate(){
+        return this.getAllProfile().profile[this.getProfileActive()]
+    }
+
     getProfileActive(){
         return +JSON.parse(localStorage.getItem('profileActive') || '{}')
     }
