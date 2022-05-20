@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.profile = this.profileService.getAllProfile()
+        
     }
 
     chooseProfile(){
