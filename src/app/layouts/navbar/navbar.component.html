@@ -42,7 +42,7 @@
         <div class="modal-body">
             <table class="ui selectable celled table">
                 <tbody>
-                    <tr *ngFor="let profile of profileList" (click)="chooseProfile()" data-bs-dismiss="modal" style="cursor: pointer;">
+                    <tr *ngFor="let profile of profileList; index as i" (click)="chooseProfile(i)" data-bs-dismiss="modal" style="cursor: pointer;">
                         <td>{{profile.name}}</td>
                     </tr>
                 </tbody>

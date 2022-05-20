@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit {
         
     }
 
-    chooseProfile(){
-        
+    chooseProfile(profileIndex: number){
+        this.profileService.setProfileActive((profileIndex).toString())
     }
 
     newProfile(){
