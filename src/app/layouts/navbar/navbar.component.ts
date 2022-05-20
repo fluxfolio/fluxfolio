@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
 
@@ -9,7 +9,10 @@ import { ProfileService } from '../../service/profile.service'
 })
 
 export class NavbarComponent implements OnInit {
+    @ViewChild('cancelButton', { static: false }) cancelButton: ElementRef<HTMLInputElement> = {} as ElementRef;
+
     newProfileName = ""
+    profileNameIsExist = false
 
     constructor(
         private profileService: ProfileService
@@ -35,13 +38,17 @@ export class NavbarComponent implements OnInit {
 
     newProfile(){
         let profile = this.profileService.getAllProfile()
+        this.profileNameIsExist = profile.profile.find((it: any) => (it.name == this.newProfileName))
+
+        if(this.profileNameIsExist) return
+
         profile.profile.push({
             name: this.newProfileName,
             coin: []
         })
         this.profileService.setAllProfile(profile)
         this.profileService.setProfileActive((profile.profile.length-1).toString())
-        this.cleanupNewProfile()
+        this.cancelButton.nativeElement.click()
     }
 
     cleanupNewProfile(){
