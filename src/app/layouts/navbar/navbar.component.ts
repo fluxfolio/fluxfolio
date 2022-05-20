@@ -9,16 +9,7 @@ import { ProfileService } from '../../service/profile.service'
 })
 
 export class NavbarComponent implements OnInit {
-    profile = {
-        profile : [
-            {
-                name: 'default profile',
-                coin: [
-                    
-                ]
-            }
-        ]
-    }
+    newProfileName = ""
 
     constructor(
         private profileService: ProfileService
@@ -26,15 +17,34 @@ export class NavbarComponent implements OnInit {
         
     }
 
-    ngOnInit() {
-        this.profile = this.profileService.getAllProfile()
+    get profileList() {
+        return this.profileService.getAllProfile().profile
     }
 
-    profileActiveName(){
+    get profileActiveName(){
         return this.profileService.getProfileActiveName()
+    }
+
+    ngOnInit() {
+        // this.profile = this.profileService.getAllProfile()
     }
 
     chooseProfile(){
         
+    }
+
+    newProfile(){
+        let profile = this.profileService.getAllProfile()
+        profile.profile.push({
+            name: this.newProfileName,
+            coin: []
+        })
+        this.profileService.setAllProfile(profile)
+        this.profileService.setProfileActive((profile.profile.length-1).toString())
+        this.cleanupNewProfile()
+    }
+
+    cleanupNewProfile(){
+        this.newProfileName = ""
     }
 }

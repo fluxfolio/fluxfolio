@@ -21,9 +21,12 @@
             </ul>
             <div class="d-flex" role="search">
                 <div class="ui left labeled button" tabindex="0">
-                    <a class="ui basic right pointing label" data-bs-toggle="modal" data-bs-target="#changeProfileMdl">{{profileActiveName()}}</a>
+                    <a class="ui basic right pointing label" data-bs-toggle="modal" data-bs-target="#changeProfileMdl">{{profileActiveName}}</a>
                     <div class="ui teal button" routerLink="setting"><i class="fa-solid fa-user-gear"></i></div>
                 </div>
+            </div>
+            <div class="d-flex ms-2" (click)="cleanupNewProfile()">
+                <i class="fa-solid fa-user-plus fa-xl" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#addNewUserDialog"></i>
             </div>
         </div>
     </div>
@@ -39,11 +42,38 @@
         <div class="modal-body">
             <table class="ui selectable celled table">
                 <tbody>
-                    <tr *ngFor="let profile of profile.profile" (click)="chooseProfile()" data-bs-dismiss="modal" style="cursor: pointer;">
+                    <tr *ngFor="let profile of profileList" (click)="chooseProfile()" data-bs-dismiss="modal" style="cursor: pointer;">
                         <td>{{profile.name}}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addNewUserDialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addNewUserDialogLabel">New user profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex flex-row fluid p-1">
+                Profile name:
+            </div>
+            <div class="d-flex flex-row fluid p-1 ui input">
+                <input [(ngModel)]="newProfileName" class="ui input" type="text" />
+            </div>
+            <div class="d-flex flex-row fluid p-1 justify-content-end">
+                <div class="p-1">
+                    <button [disabled]="!newProfileName" type="button" class="ui teal button mt-2" (click)="newProfile()" data-bs-dismiss="modal">Create</button>
+                </div>
+                <div class="p-1">
+                    <button type="button" class="ui button mt-2" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
         </div>
       </div>
     </div>
