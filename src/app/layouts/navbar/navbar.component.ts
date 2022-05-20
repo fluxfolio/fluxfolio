@@ -26,11 +26,11 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.profile = this.profileService.getAllProfile()
+        
     }
 
-    chooseProfile(){
-        
+    chooseProfile(profileIndex: number){
+        this.profileService.setProfileActive((profileIndex).toString())
     }
 
     newProfile(){
