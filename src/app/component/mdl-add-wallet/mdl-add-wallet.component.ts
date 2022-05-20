@@ -3,6 +3,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { COINS } from '../../properties/constants'
 
 import { ProfileService } from '../../service/profile.service'
+import { UpdateService } from '../../service/update.service'
 
 @Component({
     selector: 'mdl-add-wallet',
@@ -19,7 +20,8 @@ export class MdlAddWalletComponent implements OnInit {
     validateText = ''
 
     constructor(
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private updateService: UpdateService
     ) {
         
     }
@@ -74,7 +76,8 @@ export class MdlAddWalletComponent implements OnInit {
                             ],
                             amount: [
                                 0.00
-                            ]
+                            ],
+                            node: []
                         })
                     }
                 }
@@ -83,6 +86,7 @@ export class MdlAddWalletComponent implements OnInit {
             this.profileService.setAllProfile(profile)
             this.clearData()
             this.closeModal.nativeElement.click()
+            this.updateService.updateAll()
         }
         else{
             this.validateText = 'red basic'
