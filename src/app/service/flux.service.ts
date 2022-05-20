@@ -1,5 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+import axios from 'axios'
+import { setupCache } from 'axios-cache-adapter'
+
+declare function findNodeFromWallet(data: any, wallet: any): any
+
+const cache = setupCache({
+    maxAge: 15 * 60 * 1000
+})
+
+const api = axios.create({
+    adapter: cache.adapter
+})
 
 @Injectable()
 export class FluxService {
@@ -19,6 +32,7 @@ export class FluxService {
     async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; }){
         for(let i = 0; i < fluxElement.wallet.length; i++){
             await this.getWalletAmountByIndex(fluxElement, i)
+            await this.getWalletNodeByIndex(fluxElement, i);
         }
 
         return fluxElement
@@ -37,6 +51,30 @@ export class FluxService {
     }
 
     getWalletNodeByIndex(fluxElement: any, i: any){
+        return new Promise(resolve => {
+            api({
+                url: this.GET_FLUX_NODE,
+                method: 'get'
+            }).then(async (response) => {
+                let data = response.data
 
+                let dataFilter = await findNodeFromWallet(data, fluxElement.wallet[i])
+                if(dataFilter){
+                    fluxElement.node = []
+                    dataFilter.forEach((element: any) => {
+                        let nodeData = {
+                            tier: element.tier,
+                            ip: element.ip,
+                            payment_address: element.payment_address,
+                            lastpaid: element.lastpaid,
+                            rank: element.rank
+                        }
+                        fluxElement.node.push(nodeData)
+                    });
+    
+                    resolve('receive data node')
+                }
+            })
+        })
     }
 }
