@@ -53,5 +53,6 @@ export class NavbarComponent implements OnInit {
 
     cleanupNewProfile(){
         this.newProfileName = ""
+        this.profileNameIsExist = false
     }
 }
