@@ -55,22 +55,9 @@
 
     <div class="ui hidden divider"></div>
     <div class="ui raised segment">
+        
         <h2 class="ui dividing header">Node ({{getProfileFluxNode().node.length}})</h2>
-        <div class="ui four doubling cards">
-            <div class="ui card" *ngFor="let node of getProfileFluxNode().node">
-                <div class="content">
-                    <div class="header">{{node.tier}}</div>
-                    <a class="ui teal ribbon label">Flux - {{node.ip}}</a>
-                    <div class="meta"><small>{{node.payment_address}}</small></div>
-                    <div class="description">
-                        <div><span class="fw-bold">Last Paid:</span> {{displayTime(node.lastpaid)}}</div>
-                        <div><span class="fw-bold">Rank:</span> {{node.rank}}</div>
-                    </div>
-                </div>
-                <div class="extra content"><span class="fw-bold">Next Paid:</span> {{displayNextPaid(node.rank)}}
-                </div>
-            </div>
-        </div>
+        <flux-node-display></flux-node-display>
         <div class="ui hidden divider"></div>
     </div>
 </div>

@@ -12,6 +12,7 @@ import { FooterComponent } from './layouts/footer/footer.component'
 
 // component
 import { MdlAddWalletComponent } from './component/mdl-add-wallet/mdl-add-wallet.component'
+import { FluxNodeDisplayComponent } from './component/flux-node-display/flux-node-display.component'
 
 // index
 import { IndexComponent } from './page/index/index.component'
@@ -46,7 +47,8 @@ import { ProfileService } from './service/profile.service'
     NodeDashboardComponent,
     MdlAddWalletComponent,
     SettingComponent,
-    CoinOverviewComponent
+    CoinOverviewComponent,
+    FluxNodeDisplayComponent
   ],
   imports: [
     BrowserModule,
