@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+declare function findCoinDataFromProfileActive(profile: any, coin: any): any
+
 @Injectable()
 export class ProfileService {
     initialProfile = {
@@ -46,5 +48,10 @@ export class ProfileService {
     getProfileActiveName(){
         let profile = this.getAllProfile()
         return profile.profile[this.getProfileActive()].name
+    }
+
+    getProfileFluxNode(){
+        let profileActiveData = this.getProfileActiveDate()
+        return findCoinDataFromProfileActive(profileActiveData, 'flux')[0]
     }
 }

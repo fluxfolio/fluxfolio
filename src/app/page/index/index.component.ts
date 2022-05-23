@@ -32,4 +32,14 @@ export class IndexComponent implements OnInit {
     updateDataAll(){
         this.updateService.updateAll()
     }
+
+    getProfileFluxNode() :any {
+        let fluxNode = this.profileService.getProfileFluxNode()
+        if(fluxNode){
+            return fluxNode
+        }
+        return {
+            node: []
+        }
+    }
 }
