@@ -37,6 +37,8 @@ export class NavbarComponent implements OnInit {
     }
 
     newProfile(){
+        if(!this.newProfileName) return
+
         let profile = this.profileService.getAllProfile()
         this.profileNameIsExist = profile.profile.find((it: any) => (it.name == this.newProfileName))
 
