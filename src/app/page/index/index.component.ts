@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
-import { UpdateService } from '../../service/update.service'
 
 @Component({
     selector: 'index',
@@ -11,7 +10,6 @@ import { UpdateService } from '../../service/update.service'
 
 export class IndexComponent implements OnInit {
     constructor(
-        private updateService: UpdateService,
         private profileService: ProfileService
     ) {
         
@@ -27,10 +25,6 @@ export class IndexComponent implements OnInit {
 
     getProfileActiveName(){
         return this.profileService.getProfileActiveName()
-    }
-
-    updateDataAll(){
-        this.updateService.updateAll()
     }
 
     getProfileFluxNode() :any {

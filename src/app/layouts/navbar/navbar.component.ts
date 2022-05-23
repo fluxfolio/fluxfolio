@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
+import { UpdateService } from '../../service/update.service'
 
 @Component({
     selector: 'app-navbar',
@@ -14,8 +15,11 @@ export class NavbarComponent implements OnInit {
     newProfileName = ""
     profileNameIsExist = false
 
+    updateDataEveryTime = 1000*60*17
+
     constructor(
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private updateService: UpdateService
     ) {
         
     }
@@ -29,11 +33,20 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.updateDate()
+    }
+
+    updateDate(){
+        this.updateService.checkAndUpdate()
+
+        setTimeout(()=> {
+            this.updateDate()
+        }, this.updateDataEveryTime)
     }
 
     chooseProfile(profileIndex: number){
         this.profileService.setProfileActive((profileIndex).toString())
+        this.updateService.checkAndUpdate()
     }
 
     newProfile(){
