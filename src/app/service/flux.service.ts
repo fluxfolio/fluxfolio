@@ -74,6 +74,8 @@ export class FluxService {
     
                     resolve('receive data node')
                 }
+
+                resolve('receive data no node')
             })
         })
     }
