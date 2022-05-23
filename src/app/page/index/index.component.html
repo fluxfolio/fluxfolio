@@ -1,17 +1,6 @@
 <div class="ui hidden divider"></div>
 <div class="container">
-    <div class="text-end">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewWalletMdl">
-                <i class="fa-solid fa-plus"></i> Add wallet
-            </button>
-            <button type="button" class="btn btn-warning" (click)="updateDataAll()">
-                <i class="fa-solid fa-rotate"></i> Update Data
-            </button>
-        </div>
-    </div>
-
-    <h2 class="ui dividing header"><i class="user icon"></i> Profile: {{getProfileActiveName()}}</h2>
+    <h2 class="ui dividing header"><i class="fa-solid fa-user fa-xl"></i> Profile: {{getProfileActiveName()}}</h2>
     <data-last-update></data-last-update>
 
     <div class="ui hidden divider"></div>

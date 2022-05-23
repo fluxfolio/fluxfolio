@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
+import { UpdateService } from '../../service/update.service'
 
 @Component({
     selector: 'data-last-update',
@@ -10,6 +11,7 @@ import { ProfileService } from '../../service/profile.service'
 
 export class DataLastUpdateComponent implements OnInit {
     constructor(
+        private updateService: UpdateService,
         private profileService: ProfileService
     ) {
         
@@ -21,5 +23,9 @@ export class DataLastUpdateComponent implements OnInit {
 
     getLastUpdateData(){
         return this.profileService.getProfileActiveLastUpdate()
+    }
+
+    updateDataAll(){
+        this.updateService.updateAll()
     }
 }

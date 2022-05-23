@@ -22,11 +22,25 @@
             <div class="d-flex" role="search">
                 <div class="ui left labeled button" tabindex="0">
                     <a class="ui basic right pointing label" data-bs-toggle="modal" data-bs-target="#changeProfileMdl">{{profileActiveName}}</a>
-                    <div class="ui teal button" routerLink="setting"><i class="fa-solid fa-user-gear"></i></div>
+                    <div class="ui buttons">
+                        <div class="ui teal button" routerLink="setting">
+                            <i class="fa-solid fa-user-gear fa-xl"></i>
+                        </div>
+                        <div class="ui vertical animated blue button" tabindex="0" data-bs-toggle="modal" data-bs-target="#addNewUserDialog" (click)="cleanupNewProfile()">
+                            <div class="hidden content">+Profile</div>
+                            <div class="visible content">
+                                <i class="fa-solid fa-plus"></i><i class="fa-solid fa-user fa-xl"></i>
+                            </div>
+                        </div>
+                        <div class="ui vertical animated blue button" tabindex="0" data-bs-toggle="modal" data-bs-target="#addNewWalletMdl">
+                            <div class="hidden content">+Wallet</div>
+                            <div class="visible content">
+                                <i class="fa-solid fa-plus"></i><i class="fa-solid fa-wallet fa-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>
-            <div class="d-flex ms-2" (click)="cleanupNewProfile()">
-                <i class="fa-solid fa-user-plus fa-xl" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#addNewUserDialog"></i>
             </div>
         </div>
     </div>
@@ -69,10 +83,10 @@
             <div class="d-flex flex-row ms-1 text-danger" *ngIf="profileNameIsExist">Profile name is exist!</div>
             <div class="d-flex flex-row fluid p-1 justify-content-end">
                 <div class="p-1">
-                    <button [disabled]="!newProfileName" type="button" class="ui teal button mt-2" (click)="newProfile()">Create</button>
+                    <button #cancelButton type="button" class="ui button mt-2" data-bs-dismiss="modal">Cancel</button>
                 </div>
                 <div class="p-1">
-                    <button #cancelButton type="button" class="ui button mt-2" data-bs-dismiss="modal">Cancel</button>
+                    <button [disabled]="!newProfileName" type="button" class="ui teal button mt-2" (click)="newProfile()">Create</button>
                 </div>
             </div>
         </div>
