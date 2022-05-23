@@ -22,7 +22,12 @@ export class DataLastUpdateComponent implements OnInit {
     }
 
     getLastUpdateData(){
-        return this.profileService.getProfileActiveLastUpdate()
+        let lastupd = this.profileService.getProfileActiveLastUpdate()
+        if(lastupd){
+            return new Date(lastupd).toLocaleString()
+        }
+        
+        return '-'
     }
 
     updateDataAll(){

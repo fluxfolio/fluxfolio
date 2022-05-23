@@ -52,12 +52,7 @@ export class ProfileService {
 
     getProfileActiveLastUpdate(){
         let profile = this.getAllProfile()
-        let lastupd = profile.profile[this.getProfileActive()].lastupd
-        if(lastupd){
-            return new Date(lastupd).toLocaleString()
-        }
-        
-        return '-'
+        return profile.profile[this.getProfileActive()].lastupd
     }
 
     getProfileFluxNode(){

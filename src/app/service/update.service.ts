@@ -26,4 +26,18 @@ export class UpdateService {
         profile.profile[profileActive].lastupd = new Date().getTime()
         this.profileService.setAllProfile(profile)
     }
+
+    checkAndUpdate(){
+        let periodTime = 1000*60*16
+        let nowTime = new Date().getTime()
+        let lastupd = this.profileService.getProfileActiveLastUpdate()
+        if(lastupd){
+            if((lastupd+periodTime) < nowTime){
+                this.updateAll()
+            }
+        }
+        else{
+            this.updateAll()
+        }
+    }
 }
