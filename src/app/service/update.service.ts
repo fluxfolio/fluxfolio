@@ -23,6 +23,7 @@ export class UpdateService {
             }
         };
 
+        profile.profile[profileActive].lastupd = new Date().getTime()
         this.profileService.setAllProfile(profile)
     }
 }

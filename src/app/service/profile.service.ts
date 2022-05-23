@@ -50,6 +50,16 @@ export class ProfileService {
         return profile.profile[this.getProfileActive()].name
     }
 
+    getProfileActiveLastUpdate(){
+        let profile = this.getAllProfile()
+        let lastupd = profile.profile[this.getProfileActive()].lastupd
+        if(lastupd){
+            return new Date(lastupd).toLocaleString()
+        }
+        
+        return '-'
+    }
+
     getProfileFluxNode(){
         let profileActiveData = this.getProfileActiveDate()
         return findCoinDataFromProfileActive(profileActiveData, 'flux')[0]
