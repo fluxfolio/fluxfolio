@@ -46,4 +46,11 @@ export class IndexComponent implements OnInit {
     displayTime(militime :any){
         return new Date(militime*1000).toLocaleDateString()
     }
+
+    displayNextPaid(rank :number){
+        let allMinute = rank*2
+        let dayInMinute = 60*24
+        let nextDays = allMinute/dayInMinute
+        return (nextDays | 0) + ' days, ' + ((nextDays%1)*24 | 0) + ' hrs '
+    }
 }
