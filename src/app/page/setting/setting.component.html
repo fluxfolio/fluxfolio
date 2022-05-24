@@ -6,7 +6,7 @@
                 <input [(ngModel)]="imputName" type="text" (keyup.enter)="save()" autofocus>
             </div>
             <div class="p-1">
-                <button type="button" class="ui teal button mt-2" (click)="save()">Save</button>
+                <button [disabled]="!imputName" type="button" class="ui teal button mt-2" (click)="save()">Save</button>
             </div>
             <div class="p-1">
                 <button type="button" class="ui button mt-2" (click)="toggleEdit()">Cancel</button>
