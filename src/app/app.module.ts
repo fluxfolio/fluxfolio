@@ -32,6 +32,9 @@ import { NodeDashboardComponent } from './page/node/dashboard/node-dashboard.com
 // setting
 import { SettingComponent } from './page/setting/setting.component'
 
+// support
+import { SupportAboutUsComponent } from './page/support/about-us/support-about-us.component'
+
 // service
 import { UpdateService } from './service/update.service'
 import { FluxService } from './service/flux.service'
@@ -51,7 +54,8 @@ import { ProfileService } from './service/profile.service'
     SettingComponent,
     CoinOverviewComponent,
     FluxNodeDisplayComponent,
-    DataLastUpdateComponent
+    DataLastUpdateComponent,
+    SupportAboutUsComponent
   ],
   imports: [
     BrowserModule,
