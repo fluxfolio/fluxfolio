@@ -11,10 +11,18 @@ import { FluxService } from '../../../service/flux.service'
 
 export class CoinFluxComponent implements OnInit {
     @BlockUI('blockNodeDetail') blockNodeDetail !: NgBlockUI;
+    @BlockUI('blockCalculationSupply') blockCalculationSupply !: NgBlockUI;
 
     cumulusNode = 0
     nimbusNode = 0
     stratusNode = 0
+
+    cumulusCollateral = 1000
+    nimbusCollateral = 12500
+    stratusCollateral = 40000
+
+    maxSupply = 440000000
+    calculationSupply = 0
 
     constructor(
         private fluxService: FluxService
@@ -23,10 +31,11 @@ export class CoinFluxComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getNodeCount()
+        this.callNodeCount()
+        this.callCalculatingSupply()
     }
 
-    async getNodeCount(){
+    async callNodeCount(){
         this.blockNodeDetail.start()
 
         let nodeCount = await this.fluxService.getNodeCount()
@@ -46,5 +55,30 @@ export class CoinFluxComponent implements OnInit {
         if(node == 0) return 0
 
         return (node/this.getNodeCountAll()*100).toFixed(1) + '%'
+    }
+
+    getFrequency(node: number){
+        let allMinute = node*2
+        let dayInMinute = 60*24
+        let nextDays = allMinute/dayInMinute
+        return (nextDays | 0) + ' days ' + ((nextDays%1)*24 | 0) + ' hrs '
+    }
+
+    async callCalculatingSupply(){
+        this.blockCalculationSupply.start()
+
+        this.calculationSupply = await this.fluxService.getCalculationSupply()
+
+        this.blockCalculationSupply.stop()
+    }
+
+    getLockedSupply(){
+        return this.cumulusNode*this.cumulusCollateral
+            + this.nimbusNode*this.nimbusCollateral
+            + this.stratusNode*this.stratusCollateral
+    }
+
+    getTokenPercentag(num: number){
+        return (num/this.maxSupply*100).toFixed(1) + '%'
     }
 }
