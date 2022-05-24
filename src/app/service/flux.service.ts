@@ -18,6 +18,7 @@ const api = axios.create({
 export class FluxService {
     GET_FLUX_NODE = 'https://explorer.runonflux.io/api/status?q=getFluxNodes'
     GET_WALLET_AMT = 'https://explorer.runonflux.io/api/addr/{0}/?noTxList=1'
+    GET_NODE_COUNT = 'https://api.runonflux.io/daemon/getzelnodecount'
 
     constructor(
         private http: HttpClient
@@ -77,6 +78,15 @@ export class FluxService {
 
                 resolve('receive data no node')
             })
+        })
+    }
+
+    getNodeCount(){
+        api({
+            url: this.GET_NODE_COUNT,
+            method: 'get'
+        }).then(async (response) => {
+            return response
         })
     }
 }

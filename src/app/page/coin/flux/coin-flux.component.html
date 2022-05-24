@@ -8,27 +8,37 @@
     </div>
     <div class="ui raised segment">
         <h3 class="ui dividing header">Node</h3>
-        <table class="ui definition table">
+        <table class="ui selectable celled definition table compare-data">
             <thead>
                 <tr>
                     <th></th>
-                    <th>CUMULUS</th>
-                    <th>NIMBUS</th>
-                    <th>STRATUS</th>
+                    <th class="text-center">CUMULUS</th>
+                    <th class="text-center">NIMBUS</th>
+                    <th class="text-center">STRATUS</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Node</td>
-                    <td>None</td>
-                    <td>Resets rating to default value</td>
-                    <td></td>
+                    <td>Total Nodes</td>
+                    <td colspan="3">{{cumulusNode + nimbusNode + stratusNode}}</td>
                 </tr>
                 <tr>
-                    <td>set rating</td>
-                    <td>rating (integer)</td>
-                    <td>Sets the current star rating to specified value</td>
-                    <td></td>
+                    <td>Number Of Node</td>
+                    <td>{{cumulusNode}}</td>
+                    <td>{{nimbusNode}}</td>
+                    <td>{{stratusNode}}</td>
+                </tr>
+                <tr>
+                    <td>Required collateral</td>
+                    <td>1,000 FLUX</td>
+                    <td>12,500 FLUX</td>
+                    <td>40,000 FLUX</td>
+                </tr>
+                <tr>
+                    <td>Block Reward</td>
+                    <td>5.625 FLUX</td>
+                    <td>9.375 FLUX</td>
+                    <td>22.500 FLUX</td>
                 </tr>
             </tbody>
         </table>

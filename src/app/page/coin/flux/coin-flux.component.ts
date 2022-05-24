@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CoinFluxComponent implements OnInit {
+    cumulusNode = 0
+    nimbusNode = 0
+    stratusNode = 0
+
     constructor(
         
     ) {
@@ -14,6 +18,10 @@ export class CoinFluxComponent implements OnInit {
     }
 
     ngOnInit() {
+        
+    }
+
+    getNodeCount(){
         
     }
 }
