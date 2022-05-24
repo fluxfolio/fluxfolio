@@ -16,9 +16,19 @@ const api = axios.create({
 
 @Injectable()
 export class FluxService {
-    GET_FLUX_NODE = 'https://explorer.runonflux.io/api/status?q=getFluxNodes'
-    GET_WALLET_AMT = 'https://explorer.runonflux.io/api/addr/{0}/?noTxList=1'
-
+    private ENDPOINT = {
+        NODE: {
+            ALL: 'https://explorer.runonflux.io/api/status?q=getFluxNodes',
+            COUNT: 'https://api.runonflux.io/daemon/getzelnodecount'
+        },
+        WALLET: {
+            AMOUNT: 'https://explorer.runonflux.io/api/addr/{0}/?noTxList=1'
+        },
+        TOKEN: {
+            CALCULATION_SUPPLY: 'https://explorer.runonflux.io/api/statistics/circulating-supply'
+        }
+    }
+    
     constructor(
         private http: HttpClient
     ) {
@@ -26,7 +36,7 @@ export class FluxService {
     }
 
     getWalletAmount(wallet: any){
-        return this.http.get<any>(this.GET_WALLET_AMT.replace('{0}', wallet));
+        return this.http.get<any>(this.ENDPOINT.WALLET.AMOUNT.replace('{0}', wallet));
     }
 
     async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; }){
@@ -53,7 +63,7 @@ export class FluxService {
     getWalletNodeByIndex(fluxElement: any, i: any){
         return new Promise(resolve => {
             api({
-                url: this.GET_FLUX_NODE,
+                url: this.ENDPOINT.NODE.ALL,
                 method: 'get'
             }).then(async (response) => {
                 let data = response.data
@@ -76,6 +86,28 @@ export class FluxService {
                 }
 
                 resolve('receive data no node')
+            })
+        })
+    }
+
+    getNodeCount() :any{
+        return new Promise(resolve => {
+            api({
+                url: this.ENDPOINT.NODE.COUNT,
+                method: 'get'
+            }).then(async (response) => {
+                resolve(response.data.data)
+            })
+        })
+    }
+
+    getCalculationSupply() :any{
+        return new Promise(resolve => {
+            api({
+                url: this.ENDPOINT.TOKEN.CALCULATION_SUPPLY,
+                method: 'get'
+            }).then(async (response) => {
+                resolve(response.data)
             })
         })
     }

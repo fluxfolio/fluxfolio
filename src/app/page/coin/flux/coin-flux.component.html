@@ -7,30 +7,96 @@
         <div class="active section">Flux</div>
     </div>
     <div class="ui raised segment">
-        <h3 class="ui dividing header">Node</h3>
-        <table class="ui definition table">
+        <h3 class="ui dividing teal header">FLUX Supply</h3>
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="center aligned meta">Total Supply</div>
+                        <div class="center aligned header">{{maxSupply | number}} FLUX</div>
+                        <div class="description">
+                            <div class="progress">
+                                <div class="progress-bar bg-info bg-opacity-50" role="progressbar" style="width: 100%;">{{maxSupply | number}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card" *blockUI="'blockCalculationSupply'">
+                    <div class="content">
+                        <div class="center aligned meta">Circulating Supply</div>
+                        <div class="center aligned header">{{calculationSupply | number}} FLUX</div>
+                        <div class="description">
+                            <div class="progress">
+                                <div class="progress-bar bg-info bg-opacity-50" role="progressbar" [ngStyle]="{'width': getTokenPercentag(calculationSupply)}">{{getTokenPercentag(calculationSupply)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card" *blockUI="'blockNodeDetail'">
+                    <div class="content">
+                        <div class="center aligned meta">Locked Supply</div>
+                        <div class="center aligned header">{{getLockedSupply() | number}} FLUX</div>
+                        <div class="description">
+                            <div class="progress">
+                                <div class="progress-bar bg-info bg-opacity-50" role="progressbar" [ngStyle]="{'width': getTokenPercentag(getLockedSupply())}">{{getTokenPercentag(getLockedSupply())}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui hidden divider"></div>
+
+        <h3 class="ui dividing teal header">Node</h3>
+        <table class="ui selectable celled definition compact table compare-data" *blockUI="'blockNodeDetail'">
             <thead>
                 <tr>
                     <th></th>
-                    <th>CUMULUS</th>
-                    <th>NIMBUS</th>
-                    <th>STRATUS</th>
+                    <th class="text-center bg-success bg-opacity-50">CUMULUS</th>
+                    <th class="text-center bg-warning bg-opacity-50">NIMBUS</th>
+                    <th class="text-center bg-danger bg-opacity-50">STRATUS</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Node</td>
-                    <td>None</td>
-                    <td>Resets rating to default value</td>
-                    <td></td>
+                    <td>Total Nodes</td>
+                    <td colspan="3">{{getNodeCountAll() | number}}</td>
                 </tr>
                 <tr>
-                    <td>set rating</td>
-                    <td>rating (integer)</td>
-                    <td>Sets the current star rating to specified value</td>
-                    <td></td>
+                    <td>Number Of Node</td>
+                    <td>{{cumulusNode | number}}</td>
+                    <td>{{nimbusNode | number}}</td>
+                    <td>{{stratusNode | number}}</td>
+                </tr>
+                <tr>
+                    <td>Required collateral</td>
+                    <td>{{cumulusCollateral | number}} FLUX</td>
+                    <td>{{nimbusCollateral | number}} FLUX</td>
+                    <td>{{stratusCollateral | number}} FLUX</td>
+                </tr>
+                <tr>
+                    <td>Block Reward</td>
+                    <td>5.625 FLUX</td>
+                    <td>9.375 FLUX</td>
+                    <td>22.500 FLUX</td>
+                </tr>
+                <tr>
+                    <td>Reward payout frequency</td>
+                    <td>~ {{getFrequency(cumulusNode)}}</td>
+                    <td>~ {{getFrequency(nimbusNode)}}</td>
+                    <td>~ {{getFrequency(stratusNode)}}</td>
                 </tr>
             </tbody>
         </table>
+        <div class="progress">
+            <div class="progress-bar bg-success bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(cumulusNode)}">{{getNodeCountPercentag(cumulusNode)}}</div>
+            <div class="progress-bar bg-warning bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(nimbusNode)}">{{getNodeCountPercentag(nimbusNode)}}</div>
+            <div class="progress-bar bg-danger bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(stratusNode)}">{{getNodeCountPercentag(stratusNode)}}</div>
+        </div>
     </div>
 </div>
