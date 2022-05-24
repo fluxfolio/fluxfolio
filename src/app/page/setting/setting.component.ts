@@ -32,6 +32,8 @@ export class SettingComponent implements OnInit {
     }
 
     save() {
+        if(!this.imputName) return
+        
         this.activeProfileName = this.imputName
         this.toggleEdit()
     }
