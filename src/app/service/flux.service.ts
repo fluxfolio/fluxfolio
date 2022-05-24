@@ -16,9 +16,9 @@ const api = axios.create({
 
 @Injectable()
 export class FluxService {
-    GET_FLUX_NODE = 'https://explorer.runonflux.io/api/status?q=getFluxNodes'
-    GET_WALLET_AMT = 'https://explorer.runonflux.io/api/addr/{0}/?noTxList=1'
-    GET_NODE_COUNT = 'https://api.runonflux.io/daemon/getzelnodecount'
+    private GET_FLUX_NODE = 'https://explorer.runonflux.io/api/status?q=getFluxNodes'
+    private GET_WALLET_AMT = 'https://explorer.runonflux.io/api/addr/{0}/?noTxList=1'
+    private GET_NODE_COUNT = 'https://api.runonflux.io/daemon/getzelnodecount'
 
     constructor(
         private http: HttpClient
@@ -81,12 +81,14 @@ export class FluxService {
         })
     }
 
-    getNodeCount(){
-        api({
-            url: this.GET_NODE_COUNT,
-            method: 'get'
-        }).then(async (response) => {
-            return response
+    getNodeCount() :any{
+        return new Promise(resolve => {
+            api({
+                url: this.GET_NODE_COUNT,
+                method: 'get'
+            }).then(async (response) => {
+                resolve(response.data.data)
+            })
         })
     }
 }

@@ -8,25 +8,25 @@
     </div>
     <div class="ui raised segment">
         <h3 class="ui dividing header">Node</h3>
-        <table class="ui selectable celled definition table compare-data">
+        <table class="ui selectable celled definition compact table compare-data" *blockUI="'blockNodeDetail'">
             <thead>
                 <tr>
                     <th></th>
-                    <th class="text-center">CUMULUS</th>
-                    <th class="text-center">NIMBUS</th>
-                    <th class="text-center">STRATUS</th>
+                    <th class="text-center bg-success bg-opacity-50">CUMULUS</th>
+                    <th class="text-center bg-warning bg-opacity-50">NIMBUS</th>
+                    <th class="text-center bg-danger bg-opacity-50">STRATUS</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Total Nodes</td>
-                    <td colspan="3">{{cumulusNode + nimbusNode + stratusNode}}</td>
+                    <td colspan="3">{{getNodeCountAll() | number}}</td>
                 </tr>
                 <tr>
                     <td>Number Of Node</td>
-                    <td>{{cumulusNode}}</td>
-                    <td>{{nimbusNode}}</td>
-                    <td>{{stratusNode}}</td>
+                    <td>{{cumulusNode | number}}</td>
+                    <td>{{nimbusNode | number}}</td>
+                    <td>{{stratusNode | number}}</td>
                 </tr>
                 <tr>
                     <td>Required collateral</td>
@@ -42,5 +42,10 @@
                 </tr>
             </tbody>
         </table>
+        <div class="progress">
+            <div class="progress-bar bg-success bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(cumulusNode)}">{{getNodeCountPercentag(cumulusNode)}}</div>
+            <div class="progress-bar bg-warning bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(nimbusNode)}">{{getNodeCountPercentag(nimbusNode)}}</div>
+            <div class="progress-bar bg-danger bg-opacity-50" role="progressbar" [ngStyle]="{'width': getNodeCountPercentag(stratusNode)}">{{getNodeCountPercentag(stratusNode)}}</div>
+        </div>
     </div>
 </div>

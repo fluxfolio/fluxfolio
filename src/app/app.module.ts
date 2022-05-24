@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BlockUIModule } from 'ng-block-ui';
 
 // layout
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
@@ -56,7 +57,8 @@ import { ProfileService } from './service/profile.service'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BlockUIModule.forRoot()
   ],
   providers: [
     UpdateService,
