@@ -46,4 +46,20 @@ export class SettingComponent implements OnInit {
     toggleEdit() {
         this.isEdit = !this.isEdit
     }
+
+    getAllProfile(){
+        return this.profileService.getAllProfile()
+    }
+
+    convertTimeToLocalDateTime(time: any){
+        if(time){
+            return new Date(time).toLocaleString()
+        }
+        
+        return '-'
+    }
+
+    isAccountActive(i: number){
+        return i == this.profileService.getProfileActive()
+    }
 }

@@ -1,19 +1,56 @@
 <div class="ui hidden divider"></div>
 <div class="container">
+    <h2 class="ui dividing header"><i class="fa-solid fa-user-gear fa-xl"></i> Setting</h2>
+
     <ng-container *ngIf="isEdit">
-        <div class="d-flex flex-row fluid ui dividing header">
-            <div class="p-1 flex-grow-1 ui input">
-                <input [(ngModel)]="imputName" type="text" (keyup.enter)="save()" autofocus>
-            </div>
-            <div class="p-1">
-                <button [disabled]="!imputName" type="button" class="ui teal button mt-2" (click)="save()">Save</button>
-            </div>
-            <div class="p-1">
-                <button type="button" class="ui button mt-2" (click)="toggleEdit()">Cancel</button>
-            </div>
+        <div class="ui labeled fluid action input">
+            <div class="ui teal basic label">Profile Active Name : </div>
+            <input [(ngModel)]="imputName" type="text" (keyup.enter)="save()" autofocus>
+            <button class="ui teal button" [disabled]="!imputName" (click)="save()">Save</button>
+            <button class="ui button" (click)="toggleEdit()">Cancel</button>
         </div>
     </ng-container>
     <ng-container *ngIf="!isEdit">
-        <h2 class="ui dividing header">{{activeProfileName}} <span (click)="editClick()" style="cursor: pointer;"><i class="fa-solid fa-pencil fa-sm"></i></span></h2>
+        <div class="ui labeled fluid action input">
+            <div class="ui teal basic label">Profile Active Name : </div>
+            <input type="text" [value]="activeProfileName" disabled>
+            <div class="ui negative basic button" (click)="editClick()"><i class="fa-solid fa-pencil fa-sm"></i></div>
+        </div>
     </ng-container>
+
+    <div class="ui raised segment">
+        <h3 class="ui dividing header">My Data</h3>
+        
+        <div class="ui list">
+            <div class="item" *ngFor="let profile of getAllProfile().profile; let i = index">
+                <i class="caret right icon invisible"></i>
+                <div class="content">
+                    <div class="header" [class.profile-active]="isAccountActive(i)"><i class="fa-solid fa-user fa-border"></i> {{profile.name}} <span [hidden]="!isAccountActive(i)">[Active]</span></div>
+                    <div class="description">lastupd: {{profile.lastupd}} <span class="fst-italic">({{convertTimeToLocalDateTime(profile.lastupd)}})</span></div>
+                    <div class="list">
+                        <div class="item" *ngFor="let coin of profile.coin">
+                            <i class="caret right icon invisible"></i>
+                            <div class="content">
+                                <div class="header"><i class="fa-solid fa-coins fa-border"></i> {{coin.name}}</div>
+                                <div class="list">
+                                    <div class="item" *ngFor="let wallet of coin.wallet; let j = index">
+                                        <i class="caret right icon invisible"></i>
+                                        <div class="content">
+                                            <div class="header"><i class="fa-solid fa-wallet fa-border"></i> {{wallet}} <span class="fw-lighter fst-italic">({{coin.amount[j]}})</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="item" *ngFor="let node of coin.node">
+                                        <i class="caret right icon invisible"></i>
+                                        <div class="content">
+                                            <div class="header"><i class="fa-solid fa-circle-nodes fa-border"></i> {{node.ip}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
