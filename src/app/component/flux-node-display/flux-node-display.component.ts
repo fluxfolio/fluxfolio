@@ -39,4 +39,14 @@ export class FluxNodeDisplayComponent implements OnInit {
         let nextDays = allMinute/dayInMinute
         return (nextDays | 0) + ' days, ' + ((nextDays%1)*24 | 0) + ' hrs '
     }
+
+    getNodeHostLink(ip: string){
+        let url = 'http://' + ip
+
+        if(ip.indexOf(':') < 0){
+            url += ':16126'
+        }
+
+        return url
+    }
 }
