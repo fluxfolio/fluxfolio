@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
+import { UpdateService } from '../../service/update.service'
 
 @Component({
     selector: 'setting',
@@ -17,10 +18,12 @@ export class SettingComponent implements OnInit {
 
     delProfileId = 0
     delWalletProfileId = 0
+    delWalletCoinId = 0
     delWalletId = 0
 
     constructor(
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private updateService: UpdateService
     ) {
         
     }
@@ -85,16 +88,27 @@ export class SettingComponent implements OnInit {
         }
 
         this.profileService.setAllProfile(allProfile)
-        
+
         this.closeDelProfileModal.nativeElement.click()
     }
 
-    clickDeleteWallet(i: number, j: number){
+    clickDeleteWallet(i: number, j:number, k: number){
         this.delWalletProfileId = i
-        this.delWalletId = j
+        this.delWalletCoinId = j
+        this.delWalletId = k
     }
 
     deleteWallet(){
+        let allProfile = this.profileService.getAllProfile()
+        let profile = allProfile.profile[this.delWalletProfileId]
+        let coin = profile.coin[this.delWalletCoinId]
+
+        coin.wallet.splice(this.delWalletId, 1)
+        coin.amount.splice(this.delWalletId, 1)
+
+        this.profileService.setAllProfile(allProfile)
+        this.updateService.updateAll()
+
         this.closeDelWalletModal.nativeElement.click()
     }
 }

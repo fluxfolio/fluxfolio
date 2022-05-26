@@ -31,17 +31,17 @@
                     </div>
                     <div class="description">lastupd: {{profile.lastupd}} <span class="fst-italic">({{convertTimeToLocalDateTime(profile.lastupd)}})</span></div>
                     <div class="list">
-                        <div class="item" *ngFor="let coin of profile.coin">
+                        <div class="item" *ngFor="let coin of profile.coin; let j = index">
                             <i class="caret right icon invisible"></i>
                             <div class="content">
                                 <div class="header"><i class="fa-solid fa-coins fa-border"></i> {{coin.name}}</div>
                                 <div class="list">
-                                    <div class="item" *ngFor="let wallet of coin.wallet; let j = index">
+                                    <div class="item" *ngFor="let wallet of coin.wallet; let k = index">
                                         <i class="caret right icon invisible"></i>
                                         <div class="content">
                                             <div class="header">
-                                                <i class="fa-solid fa-wallet fa-border"></i> {{wallet}} <span class="fw-lighter fst-italic">({{coin.amount[j]}})</span>
-                                                <a class="trash-data" data-bs-toggle="modal" data-bs-target="#delWalletConfirm" (click)="clickDeleteWallet(i, j)"><i class="fa-solid fa-trash-can"></i></a>
+                                                <i class="fa-solid fa-wallet fa-border"></i> {{wallet}} <span class="fw-lighter fst-italic">({{coin.amount[k]}})</span>
+                                                <a class="trash-data" data-bs-toggle="modal" data-bs-target="#delWalletConfirm" (click)="clickDeleteWallet(i, j, k)"><i class="fa-solid fa-trash-can"></i></a>
                                             </div>
                                         </div>
                                     </div>

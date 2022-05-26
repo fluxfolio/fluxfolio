@@ -47,6 +47,8 @@ export class MdlAddWalletComponent implements OnInit {
             }
         }
         if(this.walletInput && chainChecked){
+            this.walletInput = this.walletInput.trim()
+            
             let profile = this.profileService.getAllProfile()
             let profileActive = this.profileService.getProfileActive()
 
