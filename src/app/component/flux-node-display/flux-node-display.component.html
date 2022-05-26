@@ -2,7 +2,7 @@
     <div class="ui card" *ngFor="let node of getProfileFluxNode().node">
         <div class="content">
             <div class="header">{{node.tier}}</div>
-            <a class="ui teal ribbon label" href="http://{{node.ip}}:16126/" target="_blank">Flux - {{node.ip}}</a>
+            <a class="ui teal ribbon label" [href]="getNodeHostLink(node.ip)" target="_blank">Flux - {{node.ip}}</a>
             <div class="meta"><small>{{node.payment_address}}</small></div>
             <div class="description">
                 <div><span class="fw-bold">Last Paid:</span> {{displayTime(node.lastpaid)}}</div>
