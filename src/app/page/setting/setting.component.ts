@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { ProfileService } from '../../service/profile.service'
 
@@ -9,8 +9,15 @@ import { ProfileService } from '../../service/profile.service'
 })
 
 export class SettingComponent implements OnInit {
+    @ViewChild('closeDelProfileModal', { static: false }) closeDelProfileModal: ElementRef<HTMLInputElement> = {} as ElementRef;
+    @ViewChild('closeDelWalletModal', { static: false }) closeDelWalletModal: ElementRef<HTMLInputElement> = {} as ElementRef;
+
     isEdit = false
     imputName = ""
+
+    delProfileId = 0
+    delWalletProfileId = 0
+    delWalletId = 0
 
     constructor(
         private profileService: ProfileService
@@ -61,5 +68,33 @@ export class SettingComponent implements OnInit {
 
     isAccountActive(i: number){
         return i == this.profileService.getProfileActive()
+    }
+
+    clickDeleteProfile(i: number){
+        this.delProfileId = i
+    }
+
+    deleteProfile(){
+        let allProfile = this.profileService.getAllProfile()
+        allProfile.profile.splice(this.delProfileId, 1)
+
+        let activeProfile = this.profileService.getProfileActive()
+        if(activeProfile > this.delProfileId){
+            activeProfile = activeProfile - 1
+            this.profileService.setProfileActive(activeProfile + '')
+        }
+
+        this.profileService.setAllProfile(allProfile)
+        
+        this.closeDelProfileModal.nativeElement.click()
+    }
+
+    clickDeleteWallet(i: number, j: number){
+        this.delWalletProfileId = i
+        this.delWalletId = j
+    }
+
+    deleteWallet(){
+        this.closeDelWalletModal.nativeElement.click()
     }
 }
