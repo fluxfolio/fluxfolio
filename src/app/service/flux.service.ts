@@ -39,9 +39,10 @@ export class FluxService {
         return this.http.get<any>(this.ENDPOINT.WALLET.AMOUNT.replace('{0}', wallet));
     }
 
-    async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; }){
+    async updateAll(fluxElement: { name?: string; wallet?: any; amount?: any; node?: any;}){
         for(let i = 0; i < fluxElement.wallet.length; i++){
             await this.getWalletAmountByIndex(fluxElement, i)
+            fluxElement.node =[]
             await this.getWalletNodeByIndex(fluxElement, i);
         }
 
@@ -68,9 +69,18 @@ export class FluxService {
             }).then(async (response) => {
                 let data = response.data
 
+                // remove node
+                let surplusNode = []
+                for(let j = 0; j < fluxElement.node.length; j++){
+                    let nowWallet = fluxElement.wallet[i]
+                    if(nowWallet != fluxElement.node[j].payment_address){
+                        surplusNode.push(fluxElement.node[j])
+                    }
+                }
+
                 let dataFilter = await findNodeFromWallet(data, fluxElement.wallet[i])
                 if(dataFilter){
-                    fluxElement.node = []
+                    fluxElement.node = surplusNode
                     dataFilter.forEach((element: any) => {
                         let nodeData = {
                             tier: element.tier,
