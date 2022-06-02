@@ -111,4 +111,8 @@ export class SettingComponent implements OnInit {
 
         this.closeDelWalletModal.nativeElement.click()
     }
+
+    deleteAllAndInitial(){
+        this.profileService.clearAndInitialProfile()
+    }
 }

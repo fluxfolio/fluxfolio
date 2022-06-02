@@ -4,7 +4,7 @@ declare function findCoinDataFromProfileActive(profile: any, coin: any): any
 
 @Injectable()
 export class ProfileService {
-    initialProfile = {
+    private initialProfile = {
         profile : [
             {
                 name: 'default profile',
@@ -19,6 +19,11 @@ export class ProfileService {
         
     ) {
 
+    }
+
+    clearAndInitialProfile(){
+        this.setAllProfile(this.initialProfile)
+        this.setProfileActive('0')
     }
 
     getAllProfile(){
