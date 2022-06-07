@@ -12,6 +12,7 @@ import { UpdateService } from '../../service/update.service'
 export class SettingComponent implements OnInit {
     @ViewChild('closeDelProfileModal', { static: false }) closeDelProfileModal: ElementRef<HTMLInputElement> = {} as ElementRef;
     @ViewChild('closeDelWalletModal', { static: false }) closeDelWalletModal: ElementRef<HTMLInputElement> = {} as ElementRef;
+    @ViewChild('closeClearDataAndInitialModal', { static: false }) closeClearDataAndInitialModal: ElementRef<HTMLInputElement> = {} as ElementRef;
 
     isEdit = false
     imputName = ""
@@ -110,5 +111,10 @@ export class SettingComponent implements OnInit {
         this.updateService.updateAll()
 
         this.closeDelWalletModal.nativeElement.click()
+    }
+
+    deleteAllAndInitial(){
+        this.profileService.clearAndInitialProfile()
+        this.closeClearDataAndInitialModal.nativeElement.click()
     }
 }

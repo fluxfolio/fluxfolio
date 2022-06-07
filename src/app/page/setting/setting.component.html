@@ -58,6 +58,9 @@
                 </div>
             </div>
         </div>
+        <div class="text-end">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#clearDataAndInitial">Delete All Data and Initial</button>
+        </div>
     </div>
 </div>
 
@@ -88,6 +91,22 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" (click)="deleteWallet()">Yes, Delete.</button>
             <button type="button" #closeDelWalletModal class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="clearDataAndInitial" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="delWalletConfirmLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-danger" id="clearDataAndInitialLabel"><i class="fa-solid fa-exclamation"></i> Delete All Data and Initial</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Do you want to delete all data and initial?</div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="deleteAllAndInitial()">Yes.</button>
+            <button type="button" #closeClearDataAndInitialModal class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
