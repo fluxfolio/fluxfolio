@@ -32,6 +32,10 @@ export class NavbarComponent implements OnInit {
         return this.profileService.getProfileActiveName()
     }
 
+    get profileActiveIndex(){
+        return this.profileService.getProfileActive()
+    }
+
     ngOnInit() {
         this.updateDate()
     }
