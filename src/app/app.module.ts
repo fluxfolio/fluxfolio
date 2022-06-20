@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
+import { ClipboardModule } from 'ngx-clipboard'
 
 // layout
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
@@ -62,6 +63,7 @@ import { ProfileService } from './service/profile.service'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ClipboardModule,
     BlockUIModule.forRoot()
   ],
   providers: [

@@ -55,18 +55,18 @@
                 <div class="tab-pane fade show active" id="flux-tab-pane" role="tabpanel" aria-labelledby="flux-tab" tabindex="0">
                     <br />Flux Address:
                     <div class="ui fluid icon input">
-                        <input type="text" value="t1NKEpkLEn8qpiddVL6us9rWu4YGT1iptNd" readonly>
-                        <i class="inverted circular copy link icon"></i>
+                        <input type="text" value="t1NKEpkLEn8qpiddVL6us9rWu4YGT1iptNd" #formInputFlux readonly>
+                        <i [ngxClipboard]="formInputFlux" class="inverted circular copy link icon"></i>
                     </div>
-                    <img src="/assets/img/flux.png" />
+                    <img class="ui centered medium image" src="/assets/img/flux.png" />
                 </div>
                 <div class="tab-pane fade" id="btc-tab-pane" role="tabpanel" aria-labelledby="btc-tab" tabindex="0">
                     <br />Bitcoin Address:
                     <div class="ui fluid icon input">
-                        <input type="text" value="12KnCDCa4x3AEc5YKGWzFnXsY61BfqGqDX" readonly>
-                        <i class="inverted circular copy link icon"></i>
+                        <input type="text" value="15SdpQv6op4E7zabPg6k23Qyot5NFkxywz" #formInputBtc readonly>
+                        <i [ngxClipboard]="formInputBtc" class="inverted circular copy link icon"></i>
                     </div>
-                    <img src="/assets/img/btc.png" />
+                    <img class="ui centered medium image" src="/assets/img/btc.png" />
                 </div>
             </div>
         </div>
